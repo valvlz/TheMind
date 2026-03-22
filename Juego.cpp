@@ -6,6 +6,7 @@ using namespace std;
 Juego::Juego() {
     nivel = 1;
     vidas = 3;
+    ultimaCarta = 0;
 }
 
 void Juego::iniciarJuego() {
@@ -34,6 +35,16 @@ void Juego::jugarRonda() {
 
     for (int i = 0; i < jugadores.size(); i++) {
         Carta c = jugadores[i].jugarCarta();
-        cout << "Jugador " << i + 1 << " jugo: " << c.getNumero() << endl;
+
+        cout << "Jugador " << i + 1 << " jugó: " << c.getNumero() << endl;
+
+        if (c.getNumero() < ultimaCarta) {
+            cout << "¡Error! Se perdió una vida" << endl;
+            vidas--;
+        }
+
+        ultimaCarta = c.getNumero();
     }
+
+    cout << "Vidas restantes: " << vidas << endl;
 }

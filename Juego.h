@@ -13,6 +13,7 @@ private:
     Mazo mazo;
     int nivel;
     int vidas;
+    int ultimaCarta;
 
 public:
     Juego();
