@@ -4,8 +4,15 @@ int main() {
     Juego juego;
 
     juego.iniciarJuego();
-    juego.repartirCartas();
-    juego.jugarRonda();
+
+    for (int i = 0; i < 3; i++) {
+        if (juego.getVidas() <= 0) {
+            break;
+        }
+
+        juego.repartirCartas();
+        juego.jugarRonda();
+}
 
     return 0;
 }

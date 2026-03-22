@@ -20,6 +20,7 @@ public:
     void iniciarJuego();
     void repartirCartas();
     void jugarRonda();
+    int getVidas();
 };
 
 #endif

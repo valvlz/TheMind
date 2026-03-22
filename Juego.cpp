@@ -34,17 +34,32 @@ void Juego::jugarRonda() {
     cout << "Jugando ronda nivel " << nivel << endl;
 
     for (int i = 0; i < jugadores.size(); i++) {
+
+        if (vidas <= 0) {
+            cout << "GAME OVER" << endl;
+            return;
+        }
+
         Carta c = jugadores[i].jugarCarta();
 
-        cout << "Jugador " << i + 1 << " jugó: " << c.getNumero() << endl;
+        cout << "Jugador " << i + 1 << " jugo: " << c.getNumero() << endl;
 
         if (c.getNumero() < ultimaCarta) {
-            cout << "¡Error! Se perdió una vida" << endl;
+            cout << "Error! Se perdio una vida" << endl;
             vidas--;
         }
 
         ultimaCarta = c.getNumero();
+
     }
 
     cout << "Vidas restantes: " << vidas << endl;
+
+    nivel++;
+    ultimaCarta = 0;
+
+}
+
+int Juego::getVidas() {
+    return vidas;
 }
