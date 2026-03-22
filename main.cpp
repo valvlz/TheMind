@@ -1,24 +1,11 @@
-#include <iostream>
-#include "Carta.h"
-#include "Mazo.h"
-#include "Jugador.h"
-
-using namespace std;
+#include "Juego.h"
 
 int main() {
-    Mazo mazo;
-    Jugador jugador1("Valen");
+    Juego juego;
 
-    // Repartir 2 cartas
-    jugador1.recibirCarta(mazo.repartir());
-    jugador1.recibirCarta(mazo.repartir());
-
-    // Jugar cartas
-    Carta c1 = jugador1.jugarCarta();
-    Carta c2 = jugador1.jugarCarta();
-
-    cout << "Jugador jugo: " << c1.getNumero() << endl;
-    cout << "Jugador jugo: " << c2.getNumero() << endl;
+    juego.iniciarJuego();
+    juego.repartirCartas();
+    juego.jugarRonda();
 
     return 0;
 }
