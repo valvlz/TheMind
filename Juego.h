@@ -17,10 +17,13 @@ private:
 
 public:
     Juego();
-    void iniciarJuego();
+    void configurarJugadores();
     void repartirCartas();
     void jugarRonda();
-    int getVidas();
+    int getVidas() const;
+    void reiniciarMazo();
+    void iniciarJuego();
+    bool gameOver() const;
 };
 
 #endif
