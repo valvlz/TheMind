@@ -4,6 +4,6 @@ Carta::Carta(int numero) {
     this->numero = numero;
 }
 
-int Carta::getNumero() {
+int Carta::getNumero() const{
     return numero;
 }
