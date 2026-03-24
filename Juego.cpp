@@ -1,15 +1,11 @@
 #include <iostream>
 #include "Juego.h"
 
-using namespace std;
+using namespace std; //
 
-Juego::Juego() {
-    nivel = 1;
-    vidas = 3;
-    ultimaCarta = 0;
-}
+Juego::Juego() : nivel(1), vidas(3), ultimaCarta(0) {}
 
-void Juego::iniciarJuego() {
+void Juego::configurarJugadores() {
     int numJugadores;
     cout << "Ingrese número de jugadores: ";
     cin >> numJugadores;
@@ -22,10 +18,25 @@ void Juego::iniciarJuego() {
     }
 }
 
+void Juego::reiniciarMazo() {
+    mazo = Mazo();
+    mazo.barajar();
+}
+
+void Juego::iniciarJuego() {
+    configurarJugadores();
+    reiniciarMazo();
+}
+
 void Juego::repartirCartas() {
+
+    reiniciarMazo();
+
     for (int i = 0; i < nivel; i++) {
         for (int j = 0; j < jugadores.size(); j++) {
-            jugadores[j].recibirCarta(mazo.repartir());
+            if (!mazo.estaVacio()) {
+                jugadores[j].recibirCarta(mazo.repartir());
+            }
         }
     }
 }
@@ -35,9 +46,13 @@ void Juego::jugarRonda() {
 
     for (int i = 0; i < jugadores.size(); i++) {
 
-        if (vidas <= 0) {
+        if (gameOver()) {
             cout << "GAME OVER" << endl;
             return;
+        }
+
+        if (!jugadores[i].tieneCartas()) {
+            continue; //si el jugador no tiene cartas, pasa al siguiente
         }
 
         Carta c = jugadores[i].jugarCarta();
@@ -60,6 +75,9 @@ void Juego::jugarRonda() {
 
 }
 
-int Juego::getVidas() {
+int Juego::getVidas() const {
     return vidas;
+}
+bool Juego::gameOver() const {
+    return vidas <= 0;
 }

@@ -16,6 +16,8 @@ public:
     Jugador(string nombre);
     void recibirCarta(Carta carta);
     Carta jugarCarta();
+    bool tieneCartas() const;
+    void ordenarMano();
 };
 
 #endif
