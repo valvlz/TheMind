@@ -11,7 +11,7 @@ Juego::Juego() {
 
 void Juego::iniciarJuego() {
     int numJugadores;
-    cout << "Ingrese numero de jugadores: ";
+    cout << "Ingrese número de jugadores: ";
     cin >> numJugadores;
 
     for (int i = 0; i < numJugadores; i++) {
@@ -42,10 +42,10 @@ void Juego::jugarRonda() {
 
         Carta c = jugadores[i].jugarCarta();
 
-        cout << "Jugador " << i + 1 << " jugo: " << c.getNumero() << endl;
+        cout << "Jugador " << i + 1 << " jugó: " << c.getNumero() << endl;
 
         if (c.getNumero() < ultimaCarta) {
-            cout << "Error! Se perdio una vida" << endl;
+            cout << "Error! Se perdió una vida" << endl;
             vidas--;
         }
 

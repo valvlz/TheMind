@@ -1,0 +1,52 @@
+Reglamento: The Mind
+The Mind es más que un simple juego de cartas; es un experimento cooperativo de sincronización y "lectura de mente" para 2 a 4 jugadores. El objetivo del equipo es jugar todas las cartas de su mano en una pila común en orden ascendente, sin comunicarse de ninguna manera.
+
+1. Objetivo del Juego
+El equipo debe superar un número determinado de niveles (según la cantidad de jugadores) colocando las cartas en orden ascendente (1 a 100). Si logran completar el último nivel, el equipo gana. Si pierden todas sus vidas antes de lograrlo, el juego termina en derrota.
+
+2. Preparación Inicial
+Cartas de Número: Baraja las 100 cartas numeradas (del 1 al 100).
+
+Cartas de Nivel: Apila las cartas de nivel en orden ascendente (el Nivel 1 arriba). Las cartas de nivel sobrantes se devuelven a la caja.
+
+Vidas y Estrellas Ninja: Según el número de jugadores, el equipo recibe una cantidad inicial de vidas y estrellas ninja que se colocan visibles en la mesa. El resto se queda en la reserva.
+
+Reparto de Cartas: En cada nivel, se reparte a cada jugador un número de cartas igual al número del nivel actual:
+
+Nivel 1: 1 carta por persona.
+
+Nivel 2: 2 cartas por persona, y así sucesivamente.
+
+3. Dinámica de una Ronda
+La Concentración: Antes de empezar, todos los jugadores colocan una palma sobre la mesa. Cuando todos estén listos, retiran la mano y la ronda comienza.
+
+Sin Turnos: No hay un orden de juego. Cualquier jugador que crea tener la carta más baja de todos los presentes puede jugarla en el centro de la mesa en cualquier momento.
+
+Silencio Absoluto: Está estrictamente prohibido hablar, hacer señas o revelar información sobre las cartas que se tienen en mano.
+
+Pausa de Concentración: En cualquier momento, un jugador puede decir "¡Alto!" para detener el flujo del juego. Tras un momento de enfoque, todos vuelven a poner la palma en la mesa para reanudar la partida.
+
+4. Errores y Ayudas Especiales
+Error de Orden: Si un jugador juega una carta y otro tiene una de valor inferior en su mano, el juego se detiene inmediatamente.
+
+Penalización: El equipo pierde una vida.
+
+Corrección: Todos los jugadores que tengan cartas inferiores a la última jugada deben descartarlas a un lado. Luego, el equipo se vuelve a concentrar y continúa.
+
+Estrellas Ninja: Cualquier jugador puede levantar la mano para proponer el uso de una estrella ninja.
+
+Si hay consenso unánime, se descarta la estrella a la reserva.
+
+Efecto: Todos los jugadores descartan simultáneamente la carta más baja de su mano y la colocan boca arriba a un lado.
+
+5. Progresión y Recompensas
+Al completar con éxito un nivel, se recogen todas las cartas, se vuelven a barajar las 100 unidades y se reparten las cartas correspondientes al siguiente nivel. Algunos niveles otorgan recompensas (una vida o una estrella ninja adicional de la reserva) al ser superados.
+
+Límites: El equipo no puede exceder las 5 vidas ni las 3 estrellas ninja en ningún momento.
+
+6. Modo Experto (Modo Ciego)
+Para quienes buscan un desafío mayor, una vez ganado el juego base, se puede jugar en modo ciego:
+
+Las reglas de juego son idénticas, con la excepción de que las cartas se juegan boca abajo.
+
+Al final de la ronda, se revelan todas las cartas jugadas. Por cada carta que no esté en el orden correcto, el equipo pierde una vida.
