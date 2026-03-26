@@ -21,7 +21,7 @@ void Juego::configurarJugadores() {
 int numJugadores;
 
     do {
-        cout << "Ingrese número de jugadores (2-2): ";
+        cout << "Ingrese numero de jugadores (2-2): ";
         cin >> numJugadores;
 
         if (numJugadores != 2) {

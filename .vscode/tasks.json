@@ -12,6 +12,7 @@
         "Jugador.cpp",
         "Mazo.cpp",
         "Carta.cpp",
+        "Ronda.cpp",
         "-o",
         "juego.exe"
       ],
