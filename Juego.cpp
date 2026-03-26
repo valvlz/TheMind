@@ -68,8 +68,10 @@ void Juego::jugarRonda() {
     vector<Carta> jugadas;
 
     for (int i = 0; i < jugadores.size(); i++) {
-        jugadas.push_back(jugadores[i].jugarCarta());
-    }
+        if (jugadores[i].cantidadCartas() > 0) {
+            jugadas.push_back(jugadores[i].jugarCartaPorIndice(0));
+        }
+}
 
     // Ordenar cartas
     sort(jugadas.begin(), jugadas.end(), compararCartas);
