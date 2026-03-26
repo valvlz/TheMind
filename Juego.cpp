@@ -6,22 +6,21 @@
 
 using namespace std;
 
+// Función para ordenar cartas
 bool compararCartas(Carta a, Carta b) {
     return a.getNumero() < b.getNumero();
 }
 
-Juego::Juego() {
-    nivel = 1;
-    vidas = 3;
-    ultimaCarta = 0;
-}
+// Constructor
+Juego::Juego() : nivel(1), vidas(3), ultimaCarta(0) {}
 
-void Juego::iniciarJuego() {
+// Configurar jugadores
+void Juego::configurarJugadores() {
     int numJugadores;
-    cout << "Ingrese numero de jugadores: ";
+    cout << "Ingrese número de jugadores: ";
     cin >> numJugadores;
 
-    jugadores.clear(); // limpiar por si acaso
+    jugadores.clear();
 
     for (int i = 0; i < numJugadores; i++) {
         string nombre;
@@ -31,14 +30,32 @@ void Juego::iniciarJuego() {
     }
 }
 
+// Reiniciar mazo
+void Juego::reiniciarMazo() {
+    mazo = Mazo();
+    mazo.barajar();
+}
+
+// Iniciar juego
+void Juego::iniciarJuego() {
+    configurarJugadores();
+    reiniciarMazo();
+}
+
+// Repartir cartas
 void Juego::repartirCartas() {
+    reiniciarMazo();
+
     for (int i = 0; i < nivel; i++) {
         for (int j = 0; j < jugadores.size(); j++) {
-            jugadores[j].recibirCarta(mazo.repartir());
+            if (!mazo.estaVacio()) {
+                jugadores[j].recibirCarta(mazo.repartir());
+            }
         }
     }
 }
 
+// Jugar una ronda
 void Juego::jugarRonda() {
     cout << "Jugando ronda nivel " << nivel << endl;
 
@@ -48,34 +65,38 @@ void Juego::jugarRonda() {
         jugadas.push_back(jugadores[i].jugarCarta());
     }
 
+    // Ordenar cartas
     sort(jugadas.begin(), jugadas.end(), compararCartas);
 
+    // Mostrar cartas
     for (int i = 0; i < jugadas.size(); i++) {
         cout << "Carta jugada: " << jugadas[i].getNumero() << endl;
     }
 
     cout << "Ronda correcta!" << endl;
 
-    //AVANZA EL JUEGO
+    // Avanzar nivel
     nivel++;
     ultimaCarta = 0;
 }
 
+// Obtener vidas
 int Juego::getVidas() {
     return vidas;
 }
 
+// Guardar partida
 void Juego::guardarPartida() {
     ofstream archivo("partida.txt");
 
     if (archivo.is_open()) {
-        //guardar jugadores
+        // Guardar jugadores
         archivo << jugadores.size() << endl;
         for (int i = 0; i < jugadores.size(); i++) {
             archivo << jugadores[i].getNombre() << endl;
         }
 
-        //guardar estado
+        // Guardar estado
         archivo << nivel << endl;
         archivo << vidas << endl;
 
@@ -84,6 +105,7 @@ void Juego::guardarPartida() {
     }
 }
 
+// Cargar partida
 void Juego::cargarPartida() {
     ifstream archivo("partida.txt");
 
@@ -93,14 +115,14 @@ void Juego::cargarPartida() {
 
         jugadores.clear();
 
-        // cargar jugadores
+        // Cargar jugadores
         for (int i = 0; i < numJugadores; i++) {
             string nombre;
             archivo >> nombre;
             jugadores.push_back(Jugador(nombre));
         }
 
-        // cargar estado
+        // Cargar estado
         archivo >> nivel;
         archivo >> vidas;
 

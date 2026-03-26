@@ -17,9 +17,11 @@ private:
 
 public:
     Juego();
+    void configurarJugadores();
     void iniciarJuego();
     void repartirCartas();
     void jugarRonda();
+
     int getVidas();
     void guardarPartida();
     void cargarPartida();

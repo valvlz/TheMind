@@ -10,13 +10,13 @@ using namespace std;
 class Jugador {
 private:
     string nombre;          // nombre del jugador
-    vector<Carta> mano;     // cartas que tiene el jugador
+    vector<Carta> mano;     // cartas del jugador
 
 public:
-    Jugador(string nombre);     // constructor
-    void recibirCarta(Carta carta);  // agregar carta a la mano
-    Carta jugarCarta();             // jugar (sacar) una carta
-    string getNombre();             // obtener el nombre del jugador
+    Jugador(string nombre);         // constructor
+    void recibirCarta(Carta carta); // agregar carta
+    Carta jugarCarta();             // jugar carta
+    string getNombre();             // obtener nombre
 };
 
 #endif
