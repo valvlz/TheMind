@@ -87,7 +87,6 @@ void Juego::jugarRonda() {
 
     // Avanzar nivel
     nivel++;
-    ultimaCarta = 0;
 }
 
 // Obtener vidas
