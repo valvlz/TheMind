@@ -12,7 +12,7 @@ bool compararCartas(Carta a, Carta b) {
 }
 
 // Constructor
-Juego::Juego() : nivel(1), vidas(3), ultimaCarta(0) {}
+Juego::Juego() : nivel(1), vidas(2), estrellas(1) {}
 
 // Configurar jugadores
 void Juego::configurarJugadores() {
@@ -45,6 +45,7 @@ void Juego::iniciarJuego() {
 // Repartir cartas
 void Juego::repartirCartas() {
     reiniciarMazo();
+    pilaCentral.clear();
 
     for (int i = 0; i < nivel; i++) {
         for (int j = 0; j < jugadores.size(); j++) {
@@ -63,6 +64,7 @@ void Juego::repartirCartas() {
 
 // Jugar una ronda
 void Juego::jugarRonda() {
+    cout << "Vidas: " << vidas << " | Estrellas: " << estrellas << endl;
     cout << "Jugando ronda nivel " << nivel << endl;
 
     vector<Carta> jugadas;
@@ -89,8 +91,12 @@ void Juego::jugarRonda() {
 }
 
 // Obtener vidas
-int Juego::getVidas() {
+int Juego::getVidas() const{
     return vidas;
+}
+
+int Juego::getEstrellas() const {
+    return estrellas;
 }
 
 // Guardar partida
