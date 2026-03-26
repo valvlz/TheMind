@@ -60,3 +60,5 @@ Juego basado en el reglamento oficial: https://lajuganera.cat/wp-content/uploads
 
 ## Diagrama UML
 ![Diagrama UML](docs/uml.png)
+Mejora
+![alt text](uml.png)
