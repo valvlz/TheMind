@@ -18,9 +18,17 @@ Juego::Juego() : nivel(1), vidas(2), estrellas(1) {}
 
 // Configurar jugadores
 void Juego::configurarJugadores() {
-    int numJugadores;
-    cout << "Ingrese numero de jugadores: ";
-    cin >> numJugadores;
+int numJugadores;
+
+    do {
+        cout << "Ingrese número de jugadores (2-2): ";
+        cin >> numJugadores;
+
+        if (numJugadores != 2) {
+            cout << "Este juego solo permite 2 jugadores.\n";
+        }
+
+    } while (numJugadores != 2);
 
     jugadores.clear();
 
