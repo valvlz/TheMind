@@ -17,7 +17,7 @@ Juego::Juego() : nivel(1), vidas(2), estrellas(1) {}
 // Configurar jugadores
 void Juego::configurarJugadores() {
     int numJugadores;
-    cout << "Ingrese número de jugadores: ";
+    cout << "Ingrese numero de jugadores: ";
     cin >> numJugadores;
 
     jugadores.clear();
@@ -68,6 +68,10 @@ void Juego::jugarRonda() {
 
     while (true) {
 
+        if (vidas <= 0) {
+            cout << "GAME OVER\n";
+            return;
+        }
         // Verificar si todos los jugadores se quedaron sin cartas
         bool todosSinCartas = true;
         for (auto& j : jugadores) {
@@ -95,9 +99,10 @@ void Juego::jugarRonda() {
 
         cout << "\nVidas: " << vidas << " | Estrellas: " << estrellas << endl;
 
-        cout << "¿Qué deseas hacer?\n";
+        cout << "Que deseas hacer?\n";
         cout << "1. Jugar carta\n";
         cout << "2. Usar estrella ninja\n";
+        cout << "3. Salir de la ronda\n";
 
         int opcion;
         cin >> opcion;
@@ -110,7 +115,7 @@ void Juego::jugarRonda() {
             jugadorIndex--;
 
             if (jugadorIndex < 0 || jugadorIndex >= jugadores.size()) {
-                cout << "Jugador inválido\n";
+                cout << "Jugador invalido\n";
                 continue;
             }
 
@@ -125,7 +130,7 @@ void Juego::jugarRonda() {
             j.mostrarMano();
 
             int indiceCarta;
-            cout << "Seleccione índice de carta: ";
+            cout << "Seleccione indice de carta: ";
             cin >> indiceCarta;
 
             if (indiceCarta < 0 || indiceCarta >= j.cantidadCartas()) {
@@ -195,6 +200,10 @@ void Juego::jugarRonda() {
                     j.eliminarCarta(indice);
                 }
             }
+        }
+    else if (opcion == 3) {
+        cout << "Saliendo de la ronda...\n";
+        return;
         }
     }
 }
