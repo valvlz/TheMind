@@ -15,7 +15,12 @@ private:
 public:
     Jugador(string nombre);         // constructor
     void recibirCarta(Carta carta); // agregar carta
-    Carta jugarCarta();             // jugar carta
+
+    Carta jugarCartaPorIndice(int indice);
+    int cantidadCartas() const;
+    Carta verCarta(int indice) const;
+    void eliminarCarta(int indice);
+
     string getNombre();             // obtener nombre
     void mostrarMano() const;
 };
