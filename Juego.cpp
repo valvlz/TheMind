@@ -64,29 +64,139 @@ void Juego::repartirCartas() {
 
 // Jugar una ronda
 void Juego::jugarRonda() {
-    cout << "Vidas: " << vidas << " | Estrellas: " << estrellas << endl;
-    cout << "Jugando ronda nivel " << nivel << endl;
+    cout << "\n--- Nivel " << nivel << " ---" << endl;
 
-    vector<Carta> jugadas;
+    while (true) {
 
-    for (int i = 0; i < jugadores.size(); i++) {
-        if (jugadores[i].cantidadCartas() > 0) {
-            jugadas.push_back(jugadores[i].jugarCartaPorIndice(0));
+        // Verificar si todos los jugadores se quedaron sin cartas
+        bool todosSinCartas = true;
+        for (auto& j : jugadores) {
+            if (j.cantidadCartas() > 0) {
+                todosSinCartas = false;
+                break;
+            }
         }
-}
 
-    // Ordenar cartas
-    sort(jugadas.begin(), jugadas.end(), compararCartas);
+        if (todosSinCartas) {
+            cout << "Nivel superado!" << endl;
 
-    // Mostrar cartas
-    for (int i = 0; i < jugadas.size(); i++) {
-        cout << "Carta jugada: " << jugadas[i].getNumero() << endl;
+            // Recompensas
+            if (nivel == 2 || nivel == 5 || nivel == 8) {
+                estrellas++;
+                cout << "Ganaste una estrella ninja!" << endl;
+            } else if (nivel == 3 || nivel == 6 || nivel == 9) {
+                vidas++;
+                cout << "Ganaste una vida!" << endl;
+            }
+
+            nivel++;
+            return;
+        }
+
+        cout << "\nVidas: " << vidas << " | Estrellas: " << estrellas << endl;
+
+        cout << "¿Qué deseas hacer?\n";
+        cout << "1. Jugar carta\n";
+        cout << "2. Usar estrella ninja\n";
+
+        int opcion;
+        cin >> opcion;
+
+        if (opcion == 1) {
+
+            int jugadorIndex;
+            cout << "Seleccione jugador (1-" << jugadores.size() << "): ";
+            cin >> jugadorIndex;
+            jugadorIndex--;
+
+            if (jugadorIndex < 0 || jugadorIndex >= jugadores.size()) {
+                cout << "Jugador inválido\n";
+                continue;
+            }
+
+            Jugador& j = jugadores[jugadorIndex];
+
+            if (j.cantidadCartas() == 0) {
+                cout << "Ese jugador no tiene cartas\n";
+                continue;
+            }
+
+            cout << "Cartas de " << j.getNombre() << ": ";
+            j.mostrarMano();
+
+            int indiceCarta;
+            cout << "Seleccione índice de carta: ";
+            cin >> indiceCarta;
+
+            if (indiceCarta < 0 || indiceCarta >= j.cantidadCartas()) {
+                cout << "Índice inválido\n";
+                continue;
+            }
+
+            Carta jugada = j.jugarCartaPorIndice(indiceCarta);
+            int valor = jugada.getNumero();
+
+            cout << j.getNombre() << " juega: " << valor << endl;
+
+            // VALIDAR ERROR
+            bool error = false;
+
+            for (auto& otro : jugadores) {
+                for (int i = 0; i < otro.cantidadCartas(); i++) {
+                    if (otro.verCarta(i).getNumero() < valor) {
+                        error = true;
+                    }
+                }
+            }
+
+            if (error) {
+                cout << "ERROR! Se pierde una vida\n";
+                vidas--;
+
+                // eliminar cartas menores
+                for (auto& otro : jugadores) {
+                    for (int i = otro.cantidadCartas() - 1; i >= 0; i--) {
+                        if (otro.verCarta(i).getNumero() < valor) {
+                            cout << "Se descarta " << otro.verCarta(i).getNumero() << endl;
+                            otro.eliminarCarta(i);
+                        }
+                    }
+                }
+            }
+
+            pilaCentral.push_back(valor);
+        }
+
+        else if (opcion == 2) {
+
+            if (estrellas <= 0) {
+                cout << "No tienes estrellas disponibles\n";
+                continue;
+            }
+
+            estrellas--;
+
+            cout << "Usando estrella ninja...\n";
+
+            for (auto& j : jugadores) {
+
+                int menor = 101;
+                int indice = -1;
+
+                for (int i = 0; i < j.cantidadCartas(); i++) {
+                    if (j.verCarta(i).getNumero() < menor) {
+                        menor = j.verCarta(i).getNumero();
+                        indice = i;
+                    }
+                }
+
+                if (indice != -1) {
+                    cout << j.getNombre() << " descarta: " << menor << endl;
+                    j.eliminarCarta(indice);
+                }
+            }
+        }
     }
-
-    cout << "Ronda correcta!" << endl;
-
-    // Avanzar nivel
-    nivel++;
 }
 
 // Obtener vidas
