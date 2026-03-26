@@ -171,7 +171,7 @@ void Juego::jugarRonda() {
             cout << "\nPresiona Enter para continuar...";
             cin.ignore();
             cin.get();
-            
+
             // VALIDAR ERROR
             bool error = false;
 
@@ -204,14 +204,33 @@ void Juego::jugarRonda() {
 
         else if (opcion == 2) {
 
-            if (estrellas <= 0) {
-                cout << "No tienes estrellas disponibles\n";
+    if (estrellas <= 0) {
+        cout << "No tienes estrellas disponibles\n";
+        continue;
+    }
+
+            cout << "\nSe propone usar una estrella ninja...\n";
+
+            bool todosAceptan = true;
+
+            for (auto& j : jugadores) {
+                char respuesta;
+                cout << j.getNombre() << ", aceptas? (s/n): ";
+                cin >> respuesta;
+
+                if (respuesta != 's' && respuesta != 'S') {
+                    todosAceptan = false;
+                }
+            }
+
+            if (!todosAceptan) {
+                cout << "No todos aceptaron. No se usa la estrella.\n";
                 continue;
             }
 
             estrellas--;
 
-            cout << "Usando estrella ninja...\n";
+            cout << "\n*** ESTRELLA NINJA ACTIVADA ***\n";
 
             for (auto& j : jugadores) {
 
@@ -230,6 +249,10 @@ void Juego::jugarRonda() {
                     j.eliminarCarta(indice);
                 }
             }
+
+            cout << "\nPresiona Enter para continuar...";
+            cin.ignore();
+            cin.get();
         }
     else if (opcion == 3) {
         cout << "Saliendo de la ronda...\n";
