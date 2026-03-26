@@ -21,6 +21,8 @@ public:
     void repartirCartas();
     void jugarRonda();
     int getVidas();
+    void guardarPartida();
+    void cargarPartida();
 };
 
 #endif
