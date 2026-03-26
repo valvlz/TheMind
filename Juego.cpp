@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <fstream>
 #include <cstdlib>
+#include "Ronda.h"
 
 using namespace std;
 
@@ -69,7 +70,7 @@ void limpiarPantalla() {
 
 // Jugar una ronda
 void Juego::jugarRonda() {
-
+    Ronda ronda(nivel);
     while (true) {
         
         limpiarPantalla();
@@ -209,7 +210,7 @@ void Juego::jugarRonda() {
         continue;
     }
 
-            cout << "\nSe propone usar una estrella ninja...\n";
+            cout << "\nUn jugador tiene la mano arriba! Se propone usar una estrella ninja...\n";
 
             bool todosAceptan = true;
 
