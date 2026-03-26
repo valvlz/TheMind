@@ -3,6 +3,7 @@
 #include "Carta.h"
 #include <algorithm>
 #include <fstream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -62,11 +63,32 @@ void Juego::repartirCartas() {
     }
 }
 
+void limpiarPantalla() {
+    system("cls"); // Windows
+}
+
 // Jugar una ronda
 void Juego::jugarRonda() {
-    cout << "\n--- Nivel " << nivel << " ---" << endl;
 
     while (true) {
+        
+        limpiarPantalla();
+
+        cout << "====================================\n";
+        cout << "          THE MIND (Nivel " << nivel << ")\n";
+        cout << "====================================\n\n";
+
+        cout << "Vidas: " << vidas << " | Estrellas: " << estrellas << "\n\n";
+
+        cout << "Pila central: ";
+        if (pilaCentral.empty()) {
+            cout << "(vacia)";
+        } else {
+            for (int v : pilaCentral) {
+                cout << v << " ";
+            }
+        }
+        cout << "\n\n";
 
         if (vidas <= 0) {
             cout << "GAME OVER\n";
@@ -82,15 +104,15 @@ void Juego::jugarRonda() {
         }
 
         if (todosSinCartas) {
-            cout << "Nivel superado!" << endl;
+            cout << "\n*** NIVEL SUPERADO ***\n";
 
             // Recompensas
             if (nivel == 2 || nivel == 5 || nivel == 8) {
                 estrellas++;
-                cout << "Ganaste una estrella ninja!" << endl;
+                cout << "Recopmensa: Ganaste una estrella ninja!" << endl;
             } else if (nivel == 3 || nivel == 6 || nivel == 9) {
                 vidas++;
-                cout << "Ganaste una vida!" << endl;
+                cout << "Recopmensa: Ganaste una vida!" << endl;
             }
 
             nivel++;
@@ -99,10 +121,13 @@ void Juego::jugarRonda() {
 
         cout << "\nVidas: " << vidas << " | Estrellas: " << estrellas << endl;
 
-        cout << "Que deseas hacer?\n";
+        cout << "------------------------------------\n";
+        cout << "Acciones disponibles:\n";
         cout << "1. Jugar carta\n";
         cout << "2. Usar estrella ninja\n";
         cout << "3. Salir de la ronda\n";
+        cout << "------------------------------------\n";
+        cout << "Seleccion: ";
 
         int opcion;
         cin >> opcion;
@@ -126,8 +151,9 @@ void Juego::jugarRonda() {
                 continue;
             }
 
-            cout << "Cartas de " << j.getNombre() << ": ";
+            cout << "Cartas de " << j.getNombre() << ":\n";
             j.mostrarMano();
+            cout << endl;
 
             int indiceCarta;
             cout << "Seleccione indice de carta: ";
@@ -142,7 +168,10 @@ void Juego::jugarRonda() {
             int valor = jugada.getNumero();
 
             cout << j.getNombre() << " juega: " << valor << endl;
-
+            cout << "\nPresiona Enter para continuar...";
+            cin.ignore();
+            cin.get();
+            
             // VALIDAR ERROR
             bool error = false;
 
@@ -155,7 +184,8 @@ void Juego::jugarRonda() {
             }
 
             if (error) {
-                cout << "ERROR! Se pierde una vida\n";
+                cout << "\n*** ERROR! ***\n";
+                cout << "Se pierde una vida\n";
                 vidas--;
 
                 // eliminar cartas menores
