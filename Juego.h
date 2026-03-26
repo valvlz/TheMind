@@ -18,12 +18,13 @@ private:
 public:
     Juego();
     void configurarJugadores();
+    void iniciarJuego();
     void repartirCartas();
     void jugarRonda();
-    int getVidas() const;
-    void reiniciarMazo();
-    void iniciarJuego();
-    bool gameOver() const;
+
+    int getVidas();
+    void guardarPartida();
+    void cargarPartida();
 };
 
 #endif
