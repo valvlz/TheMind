@@ -25,3 +25,7 @@ void Mazo::barajar() {
     std::shuffle(cartas.begin(), cartas.end(), g); //mezcla las cartas usando el generador
 }
 
+bool Mazo::estaVacio() const {
+    return cartas.empty();
+}
+

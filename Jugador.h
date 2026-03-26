@@ -17,6 +17,7 @@ public:
     void recibirCarta(Carta carta); // agregar carta
     Carta jugarCarta();             // jugar carta
     string getNombre();             // obtener nombre
+    void mostrarMano() const;
 };
 
 #endif

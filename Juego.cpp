@@ -53,6 +53,12 @@ void Juego::repartirCartas() {
             }
         }
     }
+    cout << "\n--- Cartas repartidas ---" << endl;
+
+    for (size_t i = 0; i < jugadores.size(); i++) {
+        cout << "Jugador " << i + 1 << ": ";
+        jugadores[i].mostrarMano();
+    }
 }
 
 // Jugar una ronda

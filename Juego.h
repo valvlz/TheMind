@@ -25,6 +25,7 @@ public:
     int getVidas();
     void guardarPartida();
     void cargarPartida();
+    void reiniciarMazo();
 };
 
 #endif

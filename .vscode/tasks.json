@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compilar Proyecto C++",
+      "type": "shell",
+      "command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
+      "args": [
+        "-g",
+        "main.cpp",
+        "Juego.cpp",
+        "Jugador.cpp",
+        "Mazo.cpp",
+        "Carta.cpp",
+        "-o",
+        "juego.exe"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    }
+  ]
+}
