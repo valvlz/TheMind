@@ -4,6 +4,7 @@ Jugador::Jugador(string nombre) {
     this->nombre = nombre;
 }
 
+
 void Jugador::recibirCarta(Carta carta) {
     mano.push_back(carta);
 }
