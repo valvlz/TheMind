@@ -8,7 +8,7 @@ private:
 
 public:
     Carta(int numero);
-    int getNumero();
+    int getNumero() const ;
 };
 
 #endif

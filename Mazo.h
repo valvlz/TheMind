@@ -13,6 +13,9 @@ private:
 public:
     Mazo();
     Carta repartir();
+
+    void barajar();      //Para mezclar las cartas
+    bool estaVacio() const; //Para verificar si el mazo se ha quedado sin cartas
 };
 
 #endif

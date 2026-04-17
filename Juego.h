@@ -13,14 +13,21 @@ private:
     Mazo mazo;
     int nivel;
     int vidas;
-    int ultimaCarta;
+    int estrellas;
+    vector<int> pilaCentral;
 
 public:
     Juego();
+    void configurarJugadores();
     void iniciarJuego();
     void repartirCartas();
     void jugarRonda();
-    int getVidas();
+
+    int getVidas() const;
+    void guardarPartida();
+    void cargarPartida();
+    void reiniciarMazo();
+    int getEstrellas() const;
 };
 
 #endif
