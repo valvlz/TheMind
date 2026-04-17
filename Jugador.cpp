@@ -7,7 +7,9 @@ Jugador::Jugador(string nombre) {
     this->nombre = nombre;
 }
 
+
 // Agrega una carta a la mano del jugador
+
 void Jugador::recibirCarta(Carta carta) {
     mano.push_back(carta);
     // ordenar
